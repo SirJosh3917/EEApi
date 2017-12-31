@@ -11,8 +11,8 @@ For installation on nuget,
 Or download it from the [releases page](https://github.com/SirJosh3917/EEApi/releases)
 >`https://github.com/SirJosh3917/EEApi/releases`
 
-##Documentation
+## Documentation
 You can find documentation on every single feature in EEApi and how to do anything in the [wiki. Go check it out!](https://github.com/SirJosh3917/EEApi/wiki)
 
-##Anything else?
+## Anything else?
 Leave an issue for me to look at. I'll be sure to get back to you!
