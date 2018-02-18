@@ -46,12 +46,16 @@ namespace EEApi.JSONWrapper {
 			PlayerWrapper result = new PlayerWrapper();
 			EEApi.stackoverflow.CopyAllTo<PlayerWrapperJSON>(this, result);
 
-			result.WorldsHave = new PlayerWrapper.World[this.Worlds.Count];
+			if (this.Worlds != null) {
+				result.WorldsHave = new PlayerWrapper.World[this.Worlds.Count];
 
-			int j = 0;
-			foreach(var i in Worlds.Keys) {
-				result.WorldsHave[j] = new PlayerWrapper.World(i, Worlds[i]);
-				j++;
+				int j = 0;
+				foreach (var i in Worlds.Keys) {
+					result.WorldsHave[j] = new PlayerWrapper.World(i, Worlds[i]);
+					j++;
+				}
+			} else {
+				result.WorldsHave = new PlayerWrapper.World[0];
 			}
 
 			return result;
