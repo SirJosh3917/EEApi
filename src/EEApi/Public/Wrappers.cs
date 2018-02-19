@@ -2,16 +2,16 @@
 using System.Collections.Generic;
 using System.Text;
 using EEApi.JSONWrapper;
-
-namespace EEApi {
+/*
+namespace EEApi.old {
 
 	#region /
 	/// <summary>
 	/// Public class "Build" for warrping the internal wrappers into
 	/// </summary>
-	public class Build : BuildWrapper {
-		internal Build(BuildWrapper original) {
-			stackoverflow.CopyAllTo<BuildWrapper>(original, this);
+	public class Build : Build {
+		internal Build(Build original) {
+			stackoverflow.CopyAllTo<Build>(original, this);
 		}
 	}
 	#endregion
@@ -20,9 +20,9 @@ namespace EEApi {
 	/// <summary>
 	/// Public class "Online" for wrapping the internal wrappers into
 	/// </summary>
-	public class Online : OnlineWrapper {
-		internal Online(OnlineWrapper original) {
-			stackoverflow.CopyAllTo<OnlineWrapper>(original, this);
+	public class Online : Online {
+		internal Online(Online original) {
+			stackoverflow.CopyAllTo<Online>(original, this);
 		}
 	}
 	#endregion
@@ -31,9 +31,9 @@ namespace EEApi {
 	/// <summary>
 	/// Public class "Friends" for wrapping the internal wrappers into
 	/// </summary>
-	public class Friends : FriendsWrapper {
-		internal Friends(FriendsWrapper original) {
-			stackoverflow.CopyAllTo<FriendsWrapper>(original, this);
+	public class Friends : Friends {
+		internal Friends(Friends original) {
+			stackoverflow.CopyAllTo<Friends>(original, this);
 		}
 	}
 	#endregion
@@ -42,10 +42,10 @@ namespace EEApi {
 	/// <summary>
 	/// Public class "Game" for wrapping the internal wrappers into
 	/// </summary>
-	public class Game : GameWrapper {
-		internal Game(GameWrapper original) {
+	public class Game : Game {
+		internal Game(Game original) {
 			if(original != null)
-				stackoverflow.CopyAllTo<GameWrapper>(original, this);
+				stackoverflow.CopyAllTo<Game>(original, this);
 		}
 	}
 	#endregion
@@ -54,9 +54,9 @@ namespace EEApi {
 	/// <summary>
 	/// Public class "Lobby" for wrapping the internal wrappers into
 	/// </summary>
-	public class Lobby : LobbyWrapper {
-		internal Lobby(LobbyWrapper original) {
-			stackoverflow.CopyAllTo<LobbyWrapper>(original, this);
+	public class Lobby : Lobby {
+		internal Lobby(Lobby original) {
+			stackoverflow.CopyAllTo<Lobby>(original, this);
 		}
 	}
 	#endregion
@@ -104,3 +104,4 @@ namespace EEApi {
 		}
 	}
 }
+/**/

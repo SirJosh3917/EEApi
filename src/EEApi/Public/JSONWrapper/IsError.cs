@@ -18,7 +18,7 @@ namespace EEApi.JSONWrapper {
 		internal IsError(bool _ErrorOccurred, string _Error = null) {
 			this.ErrorOccurred = _ErrorOccurred;
 
-			if (_ErrorOccurred == false) //accepted 'null' if no error
+			if (_ErrorOccurred == false)
 				this.Error = null;
 			else
 				this.Error = _Error;

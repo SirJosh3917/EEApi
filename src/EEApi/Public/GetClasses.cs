@@ -1,4 +1,5 @@
 ﻿using EEApi;
+using EEApi.Internal;
 using EEApi.Internal.HTTP;
 using EEApi.JSONWrapper;
 using System;
@@ -7,12 +8,15 @@ using System.Text;
 
 namespace EEApi {
 	public static class Get {
+		static Get() { //by default chug mode should be off. chug mode is for lazy developers like me :p
+			ChugMode = false;
+		}
 
 		/// <summary>
-		/// 
+		/// Returns if the wrapper is up to date.
 		/// </summary>
 		/// <returns></returns>
-		public static bool? WrapperUpToDate(out IsError error) {
+		public static bool WrapperUpToDate(out IsError error) {
 			error = null;
 			var build = Build();
 
@@ -21,6 +25,13 @@ namespace EEApi {
 				return false;
 			} else return build.BuildDate == new DateTime(2017, 12, 29);
 		}
+
+		/// <summary>
+		/// Makes the code work like PHP. Your code *should* work fine and normal, everything will just keep chugging along. No reason to check for errors in this mode!
+		/// </summary>
+		public static bool ChugMode { get; set; }
+
+		public static uint? Timeout { get { return HTTPGet.Timeout; } set { HTTPGet.Timeout = value; } }
 
 		/// <summary>
 		/// The amount of API Requests sent to the API so far.
@@ -34,9 +45,11 @@ namespace EEApi {
 		public static Build Build() {
 			var build = DownloadDataManager.GetBuild();
 
-			if (build == null) return null;
+			if (ChugMode) {
+				build = DeNuller.RemoveNulls(build);
+			}
 
-			return new Build(build);
+			return build;
 		}
 
 		/// <summary>
@@ -46,10 +59,11 @@ namespace EEApi {
 		public static Online Online() {
 			var online = DownloadDataManager.GetOnline();
 
-			if (online == null)
-				return null;
+			if (ChugMode) {
+				online = DeNuller.RemoveNulls(online);
+			}
 
-			return new Online(online);
+			return online;
 		}
 
 		/// <summary>
@@ -59,9 +73,11 @@ namespace EEApi {
 		public static Game Game() {
 			var game = DownloadDataManager.GetGame();
 
-			if (game == null) return null;
+			if (ChugMode) {
+				game = DeNuller.RemoveNulls(game);
+			}
 
-			return new Game(game);
+			return game;
 		}
 
 		/// <summary>
@@ -72,9 +88,11 @@ namespace EEApi {
 		public static Player PlayerByUsername(string Username) {
 			var player = DownloadDataManager.GetPlayerByUsername(Username);
 
-			if (player == null) return null;
+			if (ChugMode) {
+				player = DeNuller.RemoveNulls(player);
+			}
 
-			return new Player(player);
+			return player;
 		}
 
 		/// <summary>
@@ -85,9 +103,11 @@ namespace EEApi {
 		public static Player PlayerByUserID(string UserID) {
 			var player = DownloadDataManager.GetPlayerByUserID(UserID);
 
-			if (player == null) return null;
+			if (ChugMode) {
+				player = DeNuller.RemoveNulls(player);
+			}
 
-			return new Player(player);
+			return player;
 		}
 
 		/// <summary>
@@ -98,10 +118,11 @@ namespace EEApi {
 		public static World World(string WorldID) {
 			var world = DownloadDataManager.GetWorld(WorldID);
 
-			if (world == null)
-				return null;
+			if (ChugMode) {
+				world = DeNuller.RemoveNulls(world);
+			}
 
-			return new World(world);
+			return world;
 		}
 
 		/// <summary>
@@ -111,9 +132,11 @@ namespace EEApi {
 		public static Lobby Lobby() {
 			var lobby = DownloadDataManager.GetLobby();
 
-			if (lobby == null) return null;
+			if (ChugMode) {
+				lobby = DeNuller.RemoveNulls(lobby);
+			}
 
-			return new Lobby(lobby);
+			return lobby;
 		}
 
 		/// <summary>
@@ -121,13 +144,13 @@ namespace EEApi {
 		/// </summary>
 		/// <returns></returns>
 		public static Friends Friends() {
+			var friends = EEApi.Internal.HTTP.DownloadDataManager.GetFriends();
 
-			//get friends
-			var pls = EEApi.Internal.HTTP.DownloadDataManager.GetFriends();
+			if (ChugMode) {
+				friends = DeNuller.RemoveNulls(friends);
+			}
 
-			if (pls == null) return null;
-
-			return new Friends(pls);
+			return friends;
 		}
 	}
 }

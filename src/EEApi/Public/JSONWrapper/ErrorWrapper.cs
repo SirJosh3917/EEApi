@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using System.Text;
 
 namespace EEApi.JSONWrapper {
-	public class ErrorWrapper : Wrapper {
-		internal ErrorWrapper(string _Error) { Error = _Error; }
+	internal class ErrorWrapper {
+		internal ErrorWrapper(string _Error = null) { Error = _Error; }
 		internal ErrorWrapper() { }
 
 		#region properties
@@ -13,5 +13,17 @@ namespace EEApi.JSONWrapper {
 		/// </summary>
 		public string Error { get; set; }
 		#endregion
+
+		/// <summary>
+		/// Convert the current class to proper JSON
+		/// </summary>
+		/// <returns>JSON of this class.</returns>
+		public string ToJson() {
+			return Newtonsoft.Json.JsonConvert.SerializeObject(this);
+		}
+
+		public override string ToString() {
+			return this.ToJson();
+		}
 	}
 }

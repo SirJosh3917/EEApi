@@ -21,6 +21,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -29,6 +30,7 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
@@ -40,21 +42,24 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Internal\DeNuller.cs" />
     <Compile Include="Internal\HTTP\APILinks.cs" />
     <Compile Include="Internal\HTTP\DownloadDataManager.cs" />
     <Compile Include="Internal\HTTP\HTTPGet.cs" />
-    <Compile Include="Public\JSONWrapper\BuildWrapper.cs" />
+    <Compile Include="Internal\JSONConverters.cs" />
+    <Compile Include="Public\JSONWrapper\Build.cs" />
     <Compile Include="Public\JSONWrapper\ErrorWrapper.cs" />
-    <Compile Include="Public\JSONWrapper\FriendsWrapper.cs" />
+    <Compile Include="Public\JSONWrapper\Friends.cs" />
     <Compile Include="Public\JSONWrapper\FriendWrapper.cs" />
     <Compile Include="Public\JSONWrapper\IsError.cs" />
-    <Compile Include="Public\JSONWrapper\LobbyWrapper.cs" />
-    <Compile Include="Public\JSONWrapper\OnlinePlayerWrapper.cs" />
-    <Compile Include="Public\JSONWrapper\OnlineWrapper.cs" />
-    <Compile Include="Public\JSONWrapper\PlayerWrapper.cs" />
+    <Compile Include="Public\JSONWrapper\Lobby.cs" />
+    <Compile Include="Public\JSONWrapper\MiniClasses.cs" />
+    <Compile Include="Public\JSONWrapper\Online.cs" />
+    <Compile Include="Public\JSONWrapper\Player.cs" />
+    <Compile Include="Public\JSONWrapper\PlayerJSON.cs" />
     <Compile Include="Public\JSONWrapper\RoomWrapper.cs" />
-    <Compile Include="Public\JSONWrapper\GameWrapper.cs" />
-    <Compile Include="Public\JSONWrapper\WorldWrapper.cs" />
+    <Compile Include="Public\JSONWrapper\Game.cs" />
+    <Compile Include="Public\JSONWrapper\World.cs" />
     <Compile Include="Public\JSONWrapper\Wrapper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Internal\HTTP\HTTPRequestManager.cs" />

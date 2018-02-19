@@ -13,7 +13,7 @@ namespace EEApi.Internal.HTTP {
 		/// Get the build version and info of the API.
 		/// </summary>
 		/// <returns>A BuildWrapper</returns>
-		public static BuildWrapper GetBuild() {
+		public static Build GetBuild() {
 			return HTTPRequestManager.GetBuild(HTTPGet.GetBuild());
 		}
 
@@ -21,7 +21,7 @@ namespace EEApi.Internal.HTTP {
 		/// Get the list of friends the EEAPI bot has.
 		/// </summary>
 		/// <returns>A FriendsWrapper</returns>
-		public static FriendsWrapper GetFriends() {
+		public static Friends GetFriends() {
 			return HTTPRequestManager.GetFriends(HTTPGet.GetFriends());
 		}
 
@@ -29,7 +29,7 @@ namespace EEApi.Internal.HTTP {
 		/// Turn's the API's /game into a GameWrapper
 		/// </summary>
 		/// <returns>A GameWrapper</returns>
-		public static GameWrapper GetGame() {
+		public static Game GetGame() {
 			return HTTPRequestManager.GetGame(HTTPGet.GetGame());
 		}
 
@@ -37,7 +37,7 @@ namespace EEApi.Internal.HTTP {
 		/// Turn's the API's /lobby into a LobbyWrapper
 		/// </summary>
 		/// <returns>A LobbyWrapper</returns>
-		public static LobbyWrapper GetLobby() {
+		public static Lobby GetLobby() {
 			return HTTPRequestManager.GetLobby(HTTPGet.GetLobby());
 		}
 		
@@ -45,7 +45,7 @@ namespace EEApi.Internal.HTTP {
 		/// Turn's the API's /online into an OnlineWrapper
 		/// </summary>
 		/// <returns>An OnlineWrapper</returns>
-		public static OnlineWrapper GetOnline() {
+		public static Online GetOnline() {
 			return HTTPRequestManager.GetOnline(HTTPGet.GetOnline());
 		}
 		
@@ -54,7 +54,7 @@ namespace EEApi.Internal.HTTP {
 		/// </summary>
 		/// <param name="Username">The username of the player</param>
 		/// <returns>A PlayerWrapper</returns>
-		public static PlayerWrapper GetPlayerByUsername(string Username) {
+		public static Player GetPlayerByUsername(string Username) {
 			return HTTPRequestManager.GetPlayer(HTTPGet.GetPlayerByUsername(Username));
 		}
 		
@@ -63,7 +63,7 @@ namespace EEApi.Internal.HTTP {
 		/// </summary>
 		/// <param name="UserID">The UserID of the player.</param>
 		/// <returns>A PlayerWrapper</returns>
-		public static PlayerWrapper GetPlayerByUserID(string UserID) {
+		public static Player GetPlayerByUserID(string UserID) {
 			return HTTPRequestManager.GetPlayer(HTTPGet.GetPlayerByUserID(UserID));
 		}
 		
@@ -80,7 +80,7 @@ namespace EEApi.Internal.HTTP {
 		/// </summary>
 		/// <param name="WorldID">The World ID of the world.</param>
 		/// <returns>A WorldWrapper</returns>
-		public static WorldWrapper GetWorld(string WorldID) {
+		public static World GetWorld(string WorldID) {
 			return HTTPRequestManager.GetWorld(HTTPGet.GetWorld(WorldID));
 		}
 	}

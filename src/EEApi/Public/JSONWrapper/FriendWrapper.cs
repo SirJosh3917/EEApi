@@ -42,7 +42,7 @@ namespace EEApi.JSONWrapper {
 		/// <summary>
 		/// String representing the last time the player logged in.
 		/// </summary>
-		public string LastLogin { get; set; }
+		public DateTime LastLogin { get; set; }
 
 		/// <summary>
 		/// Boolean to determine if they have a golden border.

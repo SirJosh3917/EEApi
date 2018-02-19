@@ -4,7 +4,7 @@ using System.Text;
 
 namespace EEApi.JSONWrapper {
 	public abstract class Wrapper {
-		internal Wrapper() { this.Error = new IsError(false, null); }
+		internal Wrapper() { this.Error = new IsError(false, ""); }
 
 		#region properties
 		/// <summary>

@@ -10,8 +10,6 @@ namespace EEApi.Internal.HTTP
 {
     internal static class HTTPGet {
 		#region work
-		private static WebClient httpRequestMaker = new WebClient() { Proxy = null };
-
 		public static int APIRequestsMade = 0;
 
 		/// <summary>
@@ -22,8 +20,18 @@ namespace EEApi.Internal.HTTP
 		public static byte[] Get(string Request) {
 			APIRequestsMade++;
 			try {
-				return httpRequestMaker.DownloadData(Request);
+				using (var httpRequestMaker = new WebClient() { Proxy = null }) {
+					var res = httpRequestMaker.DownloadData(Request);
+
+					if (HTTPGet.IsValidJson(Encoding.ASCII.GetString(res)))
+						return res;
+
+					return null;
+				}
 			} catch (WebException e) {
+				if (e.Response == null)
+					return null;
+
 				var resp = new StreamReader(e.Response.GetResponseStream()).ReadToEnd();
 
 				/*
@@ -36,6 +44,8 @@ namespace EEApi.Internal.HTTP
 
 				if(HTTPGet.IsValidJson(resp))
 					return Encoding.ASCII.GetBytes(resp);
+				return null;
+			} catch (Exception e) { //webrequest does not support concurrent IO or something
 				return null;
 			}
 		}
@@ -137,5 +147,7 @@ namespace EEApi.Internal.HTTP
 			return Get(APILinks.GetWorld(WorldID));
 		}
 		#endregion
+
+		public static uint? Timeout { get; set; }
 	}
 }
